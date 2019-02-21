@@ -72,8 +72,8 @@ class FacilityImporter extends Processor {
         if(!array_key_exists('Gambia', $this->countries)){
             $countryObj = $this->ff->createContainer('country');
             $countryObj->name = "Gambia";
-            $countryId = $this->save($countryObj);
-            $this->countries['Gambia'] = $countryId;
+            // $countryId = $this->save($countryObj);
+            $this->countries['Gambia'] = 'country|GM';
         }
         $region = trim($this->mapped_data['region']);
         $district = trim($this->mapped_data['district']);
