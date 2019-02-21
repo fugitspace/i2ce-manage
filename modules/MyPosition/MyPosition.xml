@@ -130,7 +130,6 @@
         </configurationGroup>
       </configurationGroup>
       <configurationGroup name='My_Position'>
-        <!--"turn off" the facility and department fields for position -->
         <configuration name="extends">
           <displayName>The class this form extends</displayName>
           <value>iHRIS_Position</value>
@@ -164,6 +163,8 @@
       </configurationGroup>
       <configurationGroup name="iHRIS_Position">
         <configurationGroup name="meta">
+        <!--set the display style so that the new position can seen in lists. before this, it would still look for facility field which is no more-->
+        <!--look at ihris-manage/modules/MangePersonPosition/PersonPosition.xml under modules/forms/formClasses/iHRIS_Position for how this was set-->
           <configurationGroup name="display_style" path="list/default">
             <configuration name="display_args" type="delimited" values="many">
               <value>0:code</value>
@@ -175,6 +176,7 @@
             </configuration>
           </configurationGroup>
         </configurationGroup>
+        <!--turn off these fields in the original position form from which My_Position derives its fields-->
         <configurationGroup name="fields">
           <configurationGroup name="department">
             <displayName>The field 'department'</displayName>
