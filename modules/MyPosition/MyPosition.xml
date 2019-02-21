@@ -5,18 +5,15 @@
         <displayName>Customized iHRIS Position</displayName>
         <category>Site</category>
         <description>Customized version of the position form to list departments by facility</description>
-        <version>4.0.0.1</version>
+        <version>4.3.0.0</version>        <!--Change this version-->
         <requirement name='ihris-manage-Job'>
-            <atLeast version='4.0'/>
-            <lessThan version='4.1'/>
+            <atLeast version='4.3'/>
+            <!--change these versions too also for requirement ihris-manage-persoposition below-->
+            <lessThan version='4.4'/>
         </requirement>
         <requirement name='ihris-manage-PersonPosition'>
-            <atLeast version='4.0'/>
-            <lessThan version='4.1'/>
-        </requirement>
-        <requirement name='my-position'>
-            <atLeast version='4.0'/>
-            <lessThan version='4.1'/>
+            <atLeast version='4.3'/>
+            <lessThan version='4.4'/>
         </requirement>
         <path name='classes'>
             <value>./lib</value>
@@ -24,6 +21,7 @@
         <path name='templates'>
             <value>./templates</value>
         </path>
+        <priority>400</priority>
     </metadata>
     <configurationGroup name='my-position' path='/'>
         <configurationGroup name='tasks' path='/I2CE/tasks/task_description'>
@@ -85,6 +83,21 @@
                     <displayName>The class this form extends</displayName>
                     <value>I2CE_List</value>
                 </configuration>
+                <!--start add this block-->
+                <configurationGroup name="meta" path="meta/list/default">
+                    <configuration name="display_string">
+                        <value>%s, %s</value>
+                    </configuration>
+                    <configuration name="display_args" type="delimited" values="many">
+                        <value>0:facility</value>
+                        <value>1:department</value>
+                    </configuration>
+                    <configuration name="sort_fields" type="delimited" values="many">
+                        <value>0:facility</value>
+                        <value>1:department</value>
+                    </configuration>
+                </configurationGroup>
+                <!--end add block-->
                 <configurationGroup name="fields">
                     <configurationGroup name='facility'>
                         <configuration name="formfield">
@@ -140,7 +153,7 @@
                             <configurationGroup name="display">
                                 <configurationGroup name="default">
                                     <configuration name="fields">
-                                        <!-- the says that the default display is to first show/select the facility and then the facility_deparment-->
+                                        <!-- the say that the default display is to first show/select the facility and then the facility_deparment-->
                                         <value>facility_department:facility</value>
                                     </configuration>
                                 </configurationGroup>
@@ -167,5 +180,26 @@
                     </configurationGroup>
                 </configurationGroup>
             </configurationGroup>
+            <configurationGroup name="old_iHRIS_Position" path='iHRIS_Position/fields'>
+                <configurationGroup name="department">
+                    <displayName>The field 'department'</displayName>
+                    <configuration name='required' type='boolean'>
+                        <value>false</value>
+                    </configuration>
+                    <configuration name='in_db' type='boolean'>
+                        <value>false</value>
+                    </configuration>
+                </configurationGroup>
+                <configurationGroup name="facility">
+                    <displayName>The field 'department'</displayName>
+                    <configuration name='required' type='boolean'>
+                        <value>false</value>
+                    </configuration>
+                    <configuration name='in_db' type='boolean'>
+                        <value>false</value>
+                    </configuration>
+                    </configurationGroup>
+            </configurationGroup>
         </configurationGroup>
-    </I2CEConfiguraiton>
+    </configurationGroup>    <!--this could be missing, confirm the tags match-->
+</I2CEConfiguration><!--This one is misspelled, confirm it is right-->
