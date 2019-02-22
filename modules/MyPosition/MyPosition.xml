@@ -5,7 +5,7 @@
     <displayName>Customized iHRIS Position</displayName>
     <category>Site</category>
     <description>Customized version of the position form to list departments by facility</description>
-    <version>4.3.0.0</version>    <!--Change this version-->
+    <version>4.3.0.1</version>    <!--I am going to rename the class for facility_department form, I increased the last number to 1 -->
     <requirement name='ihris-manage-Job'>
       <atLeast version='4.3'/>
       <!--change these versions too also for requirement ihris-manage-persoposition below-->
@@ -60,9 +60,10 @@
         <displayName>Facility Department</displayName>
         <description>The Facility Department Form</description>
         <configuration name='class' values='single'>
+          <version>4.3.0.1</version><!--I am adding the new version here too, so the parse picks this new change -->
           <displayName>Class Name</displayName>
           <description>The name of the class providing the form</description>
-          <value>My_Facility_Department</value>
+          <value>Custom_Facility_Department</value>
         </configuration>
         <configuration name='display' values='single'>
           <displayName>Display name</displayName>
@@ -77,7 +78,8 @@
       </configurationGroup>
     </configurationGroup>
     <configurationGroup name='forms' path='/modules/forms/formClasses'>
-      <configurationGroup name='My_Facility_Department'>
+      <version>4.3.0.1</version> <!--I also put the new version here, because what I have changed is contained in this <configurationGroup>-->
+      <configurationGroup name='Custom_Facility_Department'>
         <!-- pairs up facilities with a department list-->
         <configuration name="extends">
           <displayName>The class this form extends</displayName>
